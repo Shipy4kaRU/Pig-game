@@ -30,9 +30,10 @@ const newGame = function () {
     score[i].textContent = 0;
     currentScore[i].textContent = 0;
   }
-  btnHoldScore.disabled = false;
-  btnRollDice.disabled = false;
-  dice.style.display = '';
+  btnHoldScore.style.display = '';
+  btnRollDice.style.display = '';
+  dice.style.display = 'none';
+  btnNewGame.style.outline = '';
 };
 
 const isActive = function () {
@@ -44,6 +45,7 @@ const isActive = function () {
 };
 
 const rollDice = function () {
+  dice.style.display = '';
   currentScoreValue = Math.ceil(Math.random() * 6);
   dice.src = `./dice${currentScoreValue}.png`;
   activePlayer = isActive();
@@ -80,9 +82,10 @@ const theWin = function (i) {
   players[0].classList.remove('player--active');
   players[1].classList.remove('player--active');
   players[i].classList.add('player--winner');
-  btnHoldScore.disabled = true;
-  btnRollDice.disabled = true;
+  btnHoldScore.style.display = 'none';
+  btnRollDice.style.display = 'none';
   dice.style.display = 'none';
+  btnNewGame.style.outline = 'solid #d50b0b 3px';
 };
 
 newGame();
